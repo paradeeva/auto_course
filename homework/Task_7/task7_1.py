@@ -46,7 +46,7 @@ class Segment:
         """
         y1 = self.tuple_1[1]
         y2 = self.tuple_2[1]
-        return bool((y2 > 0 > y1) or (y1 > 0 > y2))
+        return (y2 > 0 > y1) or (y1 > 0 > y2)
 
     def y_axis_intersection(self):
         """
@@ -55,7 +55,7 @@ class Segment:
         """
         x1 = self.tuple_1[0]
         x2 = self.tuple_2[0]
-        return bool((x2 > 0 > x1) or (x1 > 0 > x2))
+        return (x2 > 0 > x1) or (x1 > 0 > x2)
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
