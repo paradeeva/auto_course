@@ -14,7 +14,7 @@ string = 'Hello'
 def global_changes():
     """
     Изменить и вернуть измененные глобальные переменные
-    :return numder, string: измененные переменные
+    :return number, string: измененные переменные
     """
     # Здесь нужно написать код
     global number
