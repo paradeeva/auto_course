@@ -34,28 +34,38 @@
 import datetime
 
 # Здесь пишем код
-
-
-import functools
 import time
 
 
 def func_log(file_log='log.txt'):
-    def actual_decorator(func):
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            with open(file_log, 'a', encoding='utf-8') as f:
-                f.write(f'{func.__name__} вызвана {datetime.datetime.now().strftime("%d.%m %H:%M:%S")}\n')
-            return func(*args, **kwargs)
-        return wrapper
-    return actual_decorator
+    """
+    Принимает аргумент, по умолчанию - путь до файла
+    :param file_log: принимаемый аргумент , равный 'log.txt'
+    :return: wrapper
+    """
+    def wrapper(*args, **kwargs):
+        """
+        Открывает файл и записывает в него текст в формате %d.%m %H:%M:%S
+        :param args: принимает неограниченное количество именнованных переменные
+        :param kwargs: принимает неограниченное количество неименнованных переменных
+        :return: func_log(*args, **kwargs)  содержание записанного в файл текста
+        """
+        with open(file_log, 'a', encoding='utf-8') as f:
+            f.write(f'{func_log.__name__} вызвана {datetime.datetime.now().strftime("%d.%m %H:%M:%S")}\n')
+        return func_log(*args, **kwargs)
+    return wrapper
 
 
 @func_log()
 def func1():
-    time.sleep(3)
+    time.sleep(5)
 
 
 @func_log(file_log='my-log.txt')
 def func2():
+    time.sleep(5)
+
+
+@func_log()
+def func1():
     time.sleep(5)
