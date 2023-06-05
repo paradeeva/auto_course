@@ -17,12 +17,13 @@ def segment(tuple1, tuple2):
     :return: res возвращаемый результат
     """
     try:
-        result = tuple1 + tuple2
-        return sum(result)
+        result = tuple1[0] + tuple1[1] + tuple2[0] + tuple2[1]
+        return result
     except Exception as e:
         temp_res = str(e.args[0])
         res = temp_res[::-1]
         return res
+
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
