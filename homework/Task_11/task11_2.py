@@ -60,10 +60,9 @@ try:
     button_message_del = driver.find_element(By.CSS_SELECTOR, '.controls-Toolbar_content [data-qa="remove"]')
     sleep(5)
     button_message_del.click()
-    try:
-        message_registry = driver.find_element(By.CSS_SELECTOR, "[data-qa='msg-dialogs-item__addressee']")
-        raise Exception
-    except Exception:
-        print("Сообщение 'Старшова Лилия' удалено из реестра")
+    sleep(5)
+    message_registry = driver.find_element(By.CSS_SELECTOR, "[data-qa='msg-dialogs-item__addressee']")
+    assert message_registry.text != "Старшова Лилия", "Сообщение 'Старшова Лилия' не удалено из реестра"
+    print("Сообщение 'Старшова Лилия' удалено из реестра")
 finally:
     driver.quit()
