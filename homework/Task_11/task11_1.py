@@ -35,10 +35,9 @@ try:
     news_title = driver.find_element(By.CSS_SELECTOR, ".tensor_ru-Index__block4-content .tensor_ru-Index__card-title")
     assert news_title.text == 'Сила в людях'
     print("Заголовок новости - верный: 'Сила в людях'")
-    news_more = driver.find_element(By.CSS_SELECTOR, "#container > div.tensor_ru-content_wrapper > div > "
-                                                     "div.tensor_ru-Index__block4-bg > div > div > div:nth-child(1) > "
-                                                     "div > p:nth-child(4) > a")
-    sleep(2)
+    news_more = driver.find_element(By.CSS_SELECTOR, ".tensor_ru-Index__card-text>a[href='/about']")
+    sleep(1)
+    driver.execute_script("return arguments[0].scrollIntoView(true);", news_more)
     news_more.click()
     sleep(1)
     url = 'https://tensor.ru/about'
